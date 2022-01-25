@@ -7,7 +7,7 @@ const hero = mongoose.Schema({
     id: String,
     class_name: String,
     attack_type: String,
-    sommize: String,
+    summarize: String,
     imgs: Object,
     attributes: Object,
     roles: Object,

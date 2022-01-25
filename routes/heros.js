@@ -37,6 +37,24 @@ router.post("/base", async (req, res) => {
 })
 
 
+router.get("/imgs", async (req, res) => {
+    const heros = await Hero.find({}, { _id: 0, "imgs.hero_image": 1, id: 1, name: 1 })
+    res.json(heros)
+})
+
+router.get("/all", async (req, res) => {
+    const heros = await Hero.find({})
+    res.json(heros)
+})
+
+
+router.post("/select_hero", async (req, res) => {
+
+    const { id } = req.body
+    let hero = await Hero.findOne({ id: id })
+    res.json(hero)
+
+})
 
 module.exports = router
 
