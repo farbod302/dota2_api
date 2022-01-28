@@ -13,9 +13,8 @@ router.post("/base", async (req, res) => {
         let value = new_roles[key]
         if (value == 0) {
             new_roles[key] = 0
-
         }
-        else if (value <= 33) {
+        else if (value <= 33 && value != 0) {
             new_roles[key] = 1
         }
         else if (value > 33 & value <= 66) {
