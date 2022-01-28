@@ -11,9 +11,12 @@ router.post("/base", async (req, res) => {
     let new_roles = { ...roles }
     Object.keys(new_roles).map(function (key, index) {
         let value = new_roles[key]
-        if (value <= 33) {
+        if (value == 0) {
+            new_roles[key] = 0
+
+        }
+        else if (value <= 33) {
             new_roles[key] = 1
-            return
         }
         else if (value > 33 & value <= 66) {
             new_roles[key] = 2
