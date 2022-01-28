@@ -9,7 +9,7 @@ router.post("/base", async (req, res) => {
 
     await Hero.findOneAndRemove({ id: id })
     let new_hero = {
-        name, id, class_name, attack_type, sommize, imgs, attributes, roles: new_roles, stats, talent_tree, abilities
+        name, id, class_name, attack_type, sommize, imgs, attributes, roles, stats, talent_tree, abilities
     }
     await new Hero(new_hero).save()
 
