@@ -5,11 +5,11 @@ const Hero = require("../db-model/heros")
 
 
 router.post("/base", async (req, res) => {
-    const { name, id, class_name, attack_type, sommize, imgs, attributes, roles, stats, talent_tree, abilities } = req.body
+    const { name, id, class_name, attack_type, summarize, imgs, attributes, roles, stats, talent_tree, abilities } = req.body
 
     await Hero.findOneAndRemove({ id: id })
     let new_hero = {
-        name, id, class_name, attack_type, sommize, imgs, attributes, roles, stats, talent_tree, abilities
+        name, id, class_name, attack_type, summarize, imgs, attributes, roles, stats, talent_tree, abilities
     }
     await new Hero(new_hero).save()
 
