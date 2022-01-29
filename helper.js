@@ -1,5 +1,6 @@
 const Hero = require("./db-model/heros")
 const download = require('image-downloader')
+const translate = require('translate-google')
 
 
 const download_hero_img = async () => {
@@ -19,4 +20,17 @@ const download_hero_img = async () => {
     await Promise.all(promissess)
 }
 
-module.exports = { download_hero_img }
+
+const translate_ar =async (obj) => {
+    
+   let tr=await translate(obj,{to:"ar"})
+    return tr
+}
+
+const translate_fa =async (obj) => {
+    
+    let tr=await translate(obj,{to:"fa"})
+     return tr
+ }
+
+module.exports = { download_hero_img ,translate_ar,translate_fa}

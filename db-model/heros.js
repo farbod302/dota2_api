@@ -7,13 +7,16 @@ const hero = mongoose.Schema({
     id: String,
     class_name: String,
     attack_type: String,
-    summarize: String,
+    // summarize: String,
     imgs: Object,
     attributes: Object,
     roles: Object,
     stats: Object,
-    talent_tree: Object,
-    abilities: Object,
+    // talent_tree: Object,
+    // abilities: Object,
+    en: Object,
+    ar: Object,
+    fa:Object
 })
 
 

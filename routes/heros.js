@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Hero = require("../db-model/heros")
+const { translate_ar, translate_fa } = require('../helper');
 
 
 
@@ -9,9 +10,21 @@ router.post("/base", async (req, res) => {
 
     await Hero.findOneAndRemove({ id: id })
     let new_hero = {
-        name, id, class_name, attack_type, summarize, imgs, attributes, roles, stats, talent_tree, abilities
+        name, id, class_name, attack_type, imgs, attributes, roles, stats,
     }
-    await new Hero(new_hero).save()
+    let tr = {
+        summarize, abilities, talent_tree
+    }
+    let en = {
+        summarize, abilities, talent_tree
+    }
+    let ar = await translate_ar(tr)
+
+    let fa = await await translate_fa(tr)
+
+    await new Hero({
+        name, id, class_name, attack_type, imgs, attributes, roles, stats, en, ar, fa
+    }).save()
 
     res.json(new_hero)
 
