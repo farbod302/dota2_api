@@ -37,8 +37,8 @@ router.get("/imgs", async (req, res) => {
     res.json(heros)
 })
 
-router.post("/all", async (req, res) => {
-    const { lang } = req.body
+router.get("/all", async (req, res) => {
+    const { lang } = req.query
     const heros = await Hero.find({})
     let result = []
     heros.forEach(each => {
@@ -55,9 +55,14 @@ router.post("/all", async (req, res) => {
 
 router.post("/select_hero", async (req, res) => {
 
-    const { id } = req.body
+    const { id, lang } = req.body
     let hero = await Hero.findOne({ id: id })
-    res.json(hero)
+    const { name, class_name, attack_type, imgs, attributes, roles, stats } = hero
+    const { abilities, talent_tree, summarize } = hero[lang]
+    let new_hero = {
+        name, id, class_name, attack_type, imgs, attributes, roles, stats, abilities, talent_tree, summarize
+    }
+    res.json(new_hero)
 
 })
 
