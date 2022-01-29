@@ -22,13 +22,11 @@ const download_hero_img = async () => {
 
 
 const translate_ar =async (obj) => {
-    
    let tr=await translate(obj,{to:"ar"})
     return tr
 }
 
 const translate_fa =async (obj) => {
-    
     let tr=await translate(obj,{to:"fa"})
      return tr
  }
