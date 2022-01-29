@@ -37,9 +37,19 @@ router.get("/imgs", async (req, res) => {
     res.json(heros)
 })
 
-router.get("/all", async (req, res) => {
+router.post("/all", async (req, res) => {
+    const { lang } = req.body
     const heros = await Hero.find({})
-    res.json(heros)
+    let result = []
+    heros.forEach(each => {
+        const { name, id, class_name, attack_type, imgs, attributes, roles, stats } = each
+        const { abilities, talent_tree, summarize } = each[lang]
+        let new_hero = {
+            name, id, class_name, attack_type, imgs, attributes, roles, stats, abilities, talent_tree, summarize
+        }
+        result.push(new_hero)
+    })
+    res.json(result)
 })
 
 
