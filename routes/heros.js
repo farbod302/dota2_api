@@ -33,13 +33,14 @@ router.post("/base", async (req, res) => {
 
 
 router.get("/imgs", async (req, res) => {
-    const heros = await Hero.find({}, { _id: 0, "imgs.hero_image": 1, id: 1, name: 1 })
+    let heros = await Hero.find({}, { _id: 0, "imgs.hero_image": 1, id: 1, name: 1 }).sort({ name: 1 })
     res.json(heros)
 })
 
 router.get("/all", async (req, res) => {
-    const { lang } = req.query
-    const heros = await Hero.find({})
+    let { lang } = req.query
+    if (!lang) lang="en"
+    const heros = await Hero.find({}).sort({ name: 1 })
     let result = []
     heros.forEach(each => {
         const { name, id, class_name, attack_type, imgs, attributes, roles, stats } = each
