@@ -12,6 +12,7 @@ router.post("/base", async (req, res) => {
     let new_hero = {
         name, id, class_name, attack_type, imgs, attributes, roles, stats,
     }
+    await res.json(new_hero)
     let tr = {
         summarize, abilities, talent_tree
     }
@@ -26,7 +27,6 @@ router.post("/base", async (req, res) => {
         name, id, class_name, attack_type, imgs, attributes, roles, stats, en, ar, fa
     }).save()
 
-    res.json(new_hero)
 
 
 })
