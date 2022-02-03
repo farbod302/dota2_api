@@ -15,7 +15,10 @@ router.post("/base", async (req, res) => {
     })
 })
 
-
+router.get("/all",async(req,res)=>{
+    let items=await Item.find()
+    res.json(items)
+})
 
 
 

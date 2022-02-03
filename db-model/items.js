@@ -4,24 +4,31 @@ const mongoose = require("mongoose")
 
 const item = mongoose.Schema({
 
-    consomables: Array,
-    attribotes: Array,
-    equipments: Array,
-    miscellaneous: Array,
-    secret_shop: Array,
-    accessories: Array,
-    support: Array,
-    magical: Array,
-    armor: Array,
-    weapons: Array,
-    artifacts: Array,
-    neutral: Array,
-    features: {
-        type: Object,
-        default: new Object
+    id: String,
+    key: String,
+    name: String,
+    notes: Array,
+    cost: Number,
+    colldown: String,
+    mana: String,
+    custom_att: Array,
+    show: {
+        type: Boolean,
+        default: true
+    },
+    recipe: {
+        type: Boolean,
+        default: false
+    },
+    requirements: Array,
+    upgrades: Array,
+    img: String,
+    tier: {
+        default: null,
+        type: Number
     }
 
-}, { minimize: false })
+})
 
 
 module.exports = mongoose.model("Item", item)

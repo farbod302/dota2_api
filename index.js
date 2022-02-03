@@ -4,8 +4,7 @@ const bodyParser = require("body-parser")
 const cors = require("cors");
 const heros = require('./routes/heros');
 const patch = require('./routes/patch');
-// const item = require('./routes/items');
-const { download_hero_img, translate_ar } = require('./helper');
+const item = require('./routes/items');
 const app = express();
 require('dotenv').config()
 
@@ -20,5 +19,5 @@ app.listen(5050, () => { console.log("run"); })
 
 app.use("/hero", heros)
 app.use("/patch", patch)
-// app.use("/item", item)
+app.use("/item", item)
 
