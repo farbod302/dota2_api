@@ -5,6 +5,7 @@ const cors = require("cors");
 const heros = require('./routes/heros');
 const patch = require('./routes/patch');
 const item = require('./routes/items');
+const { counter_pick } = require('./counter_pick');
 const app = express();
 require('dotenv').config()
 
@@ -21,3 +22,9 @@ app.use("/hero", heros)
 app.use("/patch", patch)
 app.use("/item", item)
 
+
+app.post("/counter_pick", (req, res) => {
+    const { heros } = req.body
+    let score = counter_pick(heros)
+    res.json({score})
+})
