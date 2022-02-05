@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 
 const patch = mongoose.Schema({
 
-    path: String,
+    patch: String,
     general: {
         type: Array,
         default: []

@@ -50,7 +50,7 @@ const counter_pick = (heros) => {
     })
     score = score.filter(each => !heros.includes(each.name))
     score = score.sort((a, b) => b.score - a.score)
-    
+    console.log(score);
     return score
 
 }

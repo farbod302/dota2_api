@@ -20,6 +20,7 @@ const item = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    secret_shop:Boolean,
     requirements: Array,
     upgrades: Array,
     img: String,

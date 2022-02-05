@@ -28,3 +28,4 @@ app.post("/counter_pick", (req, res) => {
     let score = counter_pick(heros)
     res.json({score})
 })
+

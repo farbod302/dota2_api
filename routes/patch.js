@@ -14,7 +14,16 @@ router.post("/bace", async (req, res) => {
     res.json(new_patch)
 })
 
+router.get("/", async (req, res) => {
+    const patches = await Patch.find({})
+    res.json(patches)
+})
 
+router.post("/select_patch", (req, res) => {
+    const { patch } = req.body
+    let selected = await Patch.findOne({ patch: patch })
+    res.json({ selected })
+})
 
 
 module.exports = router

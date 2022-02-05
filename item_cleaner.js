@@ -36,9 +36,9 @@ const main_item_cleaner = async () => {
     let all_recipes = [...api_items].filter(each => each.key.indexOf("item_recipe") > -1)
     let add_item = []
     all_main.forEach(each => {
-        let { id, name, key, notes, cost, requirements, upgrades, custom_attributes } = each
+        let { id, name, key, notes, cost,secret_shop, requirements, upgrades, custom_attributes } = each
         let new_item = {
-            id, name: name, key, notes, cost, requirements, upgrades, custom_att: custom_attributes
+            id, name: name, key, notes, cost, secret_shop,requirements, upgrades, custom_att: custom_attributes
         }
 
         //find img
