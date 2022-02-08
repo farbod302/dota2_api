@@ -56,7 +56,8 @@ router.get("/all", async (req, res) => {
 
 router.post("/select_hero", async (req, res) => {
 
-    const { id, lang } = req.body
+    let { id, lang } = req.body
+    { lang ? lang = lang : lang = "en" }
     let hero = await Hero.findOne({ id: id })
     const { name, class_name, attack_type, imgs, attributes, roles, stats } = hero
     const { abilities, talent_tree, summarize } = hero[lang]
@@ -64,6 +65,15 @@ router.post("/select_hero", async (req, res) => {
         name, id, class_name, attack_type, imgs, attributes, roles, stats, abilities, talent_tree, summarize
     }
     res.json(new_hero)
+
+})
+
+router.post("/update", async (req, res) => {
+
+    const { id, fa } = req.body
+
+    await Hero.findOneAndUpdate({ id: id }, { $set: { fa: fa } })
+    res.json(true)
 
 })
 

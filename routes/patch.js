@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     res.json(patches)
 })
 
-router.post("/select_patch", (req, res) => {
+router.post("/select_patch",async (req, res) => {
     const { patch } = req.body
     let selected = await Patch.findOne({ patch: patch })
     res.json({ selected })

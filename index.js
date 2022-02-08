@@ -21,11 +21,14 @@ app.listen(5050, () => { console.log("run"); })
 app.use("/hero", heros)
 app.use("/patch", patch)
 app.use("/item", item)
+app.use("/items_img", express.static('item_img'))
+app.use("/heros_img", express.static('hero_img'))
+
 
 
 app.post("/counter_pick", (req, res) => {
     const { heros } = req.body
     let score = counter_pick(heros)
-    res.json({score})
+    res.json({ score })
 })
 

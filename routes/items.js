@@ -38,11 +38,15 @@ router.post("/select_item", async (req, res) => {
     let req_imgs = await Promise.all(requ)
     let up_imgs = await Promise.all(up)
 
-    item.requirements=req_imgs
-    item.upgrades=up_imgs
-   
+    item.requirements = req_imgs
+    item.upgrades = up_imgs
+
     res.json(item)
-   
+
+})
+router.get("/imgs", async (req, res) => {
+    let items = await Item.find({}, { _id: 0, img: 1 })
+    res.json(items)
 })
 
 
